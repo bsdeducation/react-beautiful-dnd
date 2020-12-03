@@ -56,7 +56,7 @@ export default function Draggable(props: Props) {
     shouldRespectForcePress,
     canDragInteractiveElements,
     isClone,
-
+    lock,
     // mapProps
     mapped,
 
@@ -137,7 +137,7 @@ export default function Draggable(props: Props) {
   );
 
   const provided: Provided = useMemo(() => {
-    const style: DraggableStyle = getStyle(mapped);
+    const style: DraggableStyle = getStyle(mapped, lock);
     const onTransitionEnd =
       mapped.type === 'DRAGGING' && mapped.dropping ? onMoveEnd : null;
 

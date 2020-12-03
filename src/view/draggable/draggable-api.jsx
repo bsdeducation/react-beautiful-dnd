@@ -35,12 +35,16 @@ export function PublicDraggable(props: PublicOwnProps) {
   const shouldRespectForcePress: boolean = Boolean(
     props.shouldRespectForcePress,
   );
+  const isDimensionalLocked: boolean = Boolean(
+    props.lock
+  )
 
   return (
     <PrivateDraggable
       {...props}
       isClone={false}
       isEnabled={isEnabled}
+      lock={isDimensionalLocked}
       canDragInteractiveElements={canDragInteractiveElements}
       shouldRespectForcePress={shouldRespectForcePress}
     />

@@ -15,6 +15,8 @@ export type DroppableDescriptor = {|
   mode: DroppableMode,
 |};
 
+export type LockMode = 'vertical' | 'horizontal';
+
 export type DraggableDescriptor = {|
   id: DraggableId,
   index: number,

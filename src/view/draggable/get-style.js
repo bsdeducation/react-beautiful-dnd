@@ -62,7 +62,7 @@ function getDraggingStyle(dragging: DraggingMapProps): DraggingStyle {
 
   const transform: ?string = isDropAnimating
     ? transforms.drop(offset, isCombining)
-    : transforms.moveTo(offset);
+    : transforms.moveTo(offset, lock);
 
   const style: DraggingStyle = {
     // ## Placement
@@ -96,7 +96,7 @@ function getDraggingStyle(dragging: DraggingMapProps): DraggingStyle {
 
 function getSecondaryStyle(secondary: SecondaryMapProps): NotDraggingStyle {
   return {
-    transform: transforms.moveTo(secondary.offset),
+    transform: transforms.moveTo(secondary.offset, lock),
     // transition style is applied in the head
     transition: secondary.shouldAnimateDisplacement ? null : 'none',
   };
