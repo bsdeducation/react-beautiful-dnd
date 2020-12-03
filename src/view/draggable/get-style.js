@@ -1,7 +1,7 @@
 // @flow
 import type { BoxModel } from 'css-box-model';
 import { combine, transforms, transitions } from '../../animation';
-import type { DraggableDimension } from '../../types';
+import type { DraggableDimension, LockMode } from '../../types';
 import type {
   DraggingStyle,
   NotDraggingStyle,
@@ -50,7 +50,7 @@ const getShouldDraggingAnimate = (dragging: DraggingMapProps): boolean => {
   return dragging.mode === 'SNAP';
 };
 
-function getDraggingStyle(dragging: DraggingMapProps): DraggingStyle {
+function getDraggingStyle(dragging: DraggingMapProps, lock: LockMode): DraggingStyle {
   const dimension: DraggableDimension = dragging.dimension;
   const box: BoxModel = dimension.client;
   const { offset, combineWith, dropping } = dragging;
@@ -94,7 +94,7 @@ function getDraggingStyle(dragging: DraggingMapProps): DraggingStyle {
   return style;
 }
 
-function getSecondaryStyle(secondary: SecondaryMapProps): NotDraggingStyle {
+function getSecondaryStyle(secondary: SecondaryMapProps, lock: LockMode): NotDraggingStyle {
   return {
     transform: transforms.moveTo(secondary.offset, lock),
     // transition style is applied in the head
