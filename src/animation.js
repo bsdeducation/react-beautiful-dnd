@@ -54,11 +54,9 @@ export const transitions = {
 };
 
 const moveTo = (offset: Position, dragOverrideX?: number, dragOverrideY?: number): ?string =>{
-  console.log('dragOverrideX: ', dragOverrideX)
-  console.log('dragOverrideY: ', dragOverrideY)
-  return isEqual(offset, origin) ? null : `translate(${
-      0
-    }px, ${
+  //console.log('dragOverrideX: ', dragOverrideX)
+  //console.log('dragOverrideY: ', dragOverrideY)
+  return isEqual(offset, origin) ? null : `translate(0px, ${
       dragOverrideY != null 
         ? dragOverrideY
         : offset.y
