@@ -94,7 +94,7 @@ function getDraggingStyle(dragging: DraggingMapProps, dragOverrideX?: number, dr
   return style;
 }
 
-function getSecondaryStyle(secondary: SecondaryMapProps, dragOverrideX: number, dragOverrideY: number ): NotDraggingStyle {
+function getSecondaryStyle(secondary: SecondaryMapProps, dragOverrideX?: number, dragOverrideY?: number ): NotDraggingStyle {
   return {
     transform: transforms.moveTo(secondary.offset, dragOverrideX, dragOverrideY),
     // transition style is applied in the head

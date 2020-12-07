@@ -53,7 +53,7 @@ export const transitions = {
   placeholder: `height ${outOfTheWayTiming}, width ${outOfTheWayTiming}, margin ${outOfTheWayTiming}`,
 };
 
-const moveTo = (offset: Position, dragOverrideX?: number, dragOverrideY: number): ?string =>
+const moveTo = (offset: Position, dragOverrideX?: number, dragOverrideY?: number): ?string =>
   isEqual(offset, origin) ? null : `translate(${
       dragOverrideX != null 
         ? dragOverrideX
