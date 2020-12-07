@@ -57,9 +57,7 @@ const moveTo = (offset: Position, dragOverrideX?: number, dragOverrideY?: number
   console.log('dragOverrideX: ', dragOverrideX)
   console.log('dragOverrideY: ', dragOverrideY)
   return isEqual(offset, origin) ? null : `translate(${
-      dragOverrideX != null 
-        ? dragOverrideX
-        : offset.x
+      0
     }px, ${
       dragOverrideY != null 
         ? dragOverrideY
