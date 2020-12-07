@@ -138,7 +138,7 @@ export default function Draggable(props: Props) {
   );
 
   const provided: Provided = useMemo(() => {
-    const style: DraggableStyle = getStyle(mapped, lock);
+    const style: DraggableStyle = getStyle(mapped, dragOverrideX, dragOverrideY);
     const onTransitionEnd =
       mapped.type === 'DRAGGING' && mapped.dropping ? onMoveEnd : null;
 
