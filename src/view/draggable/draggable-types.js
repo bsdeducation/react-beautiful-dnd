@@ -5,7 +5,6 @@ import type {
   DraggableId,
   DroppableId,
   DraggableDimension,
-  LockMode,
   State,
   MovementMode,
   ContextId,
@@ -168,7 +167,8 @@ export type PublicOwnProps = {|
   isDragDisabled?: boolean,
   disableInteractiveElementBlocking?: boolean,
   shouldRespectForcePress?: boolean,
-  lock?: LockMode
+  dragOverrideX?: number,
+  dragOverrideY?: number
 |};
 
 export type PrivateOwnProps = {|

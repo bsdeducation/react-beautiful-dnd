@@ -1,7 +1,7 @@
 // @flow
 import type { BoxModel } from 'css-box-model';
 import { combine, transforms, transitions } from '../../animation';
-import type { DraggableDimension, LockMode } from '../../types';
+import type { DraggableDimension } from '../../types';
 import type {
   DraggingStyle,
   NotDraggingStyle,
@@ -50,7 +50,7 @@ const getShouldDraggingAnimate = (dragging: DraggingMapProps): boolean => {
   return dragging.mode === 'SNAP';
 };
 
-function getDraggingStyle(dragging: DraggingMapProps, lock: LockMode): DraggingStyle {
+function getDraggingStyle(dragging: DraggingMapProps, dragOverrideX?: number, dragOverrideY?: number): DraggingStyle {
   const dimension: DraggableDimension = dragging.dimension;
   const box: BoxModel = dimension.client;
   const { offset, combineWith, dropping } = dragging;
@@ -62,7 +62,7 @@ function getDraggingStyle(dragging: DraggingMapProps, lock: LockMode): DraggingS
 
   const transform: ?string = isDropAnimating
     ? transforms.drop(offset, isCombining)
-    : transforms.moveTo(offset, lock);
+    : transforms.moveTo(offset, dragOverrideX, dragOverrideY);
 
   const style: DraggingStyle = {
     // ## Placement
@@ -94,9 +94,9 @@ function getDraggingStyle(dragging: DraggingMapProps, lock: LockMode): DraggingS
   return style;
 }
 
-function getSecondaryStyle(secondary: SecondaryMapProps, lock: LockMode): NotDraggingStyle {
+function getSecondaryStyle(secondary: SecondaryMapProps, dragOverrideX: number, dragOverrideY: number ): NotDraggingStyle {
   return {
-    transform: transforms.moveTo(secondary.offset, lock),
+    transform: transforms.moveTo(secondary.offset, dragOverrideX, dragOverrideY),
     // transition style is applied in the head
     transition: secondary.shouldAnimateDisplacement ? null : 'none',
   };

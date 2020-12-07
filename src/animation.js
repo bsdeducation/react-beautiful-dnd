@@ -1,7 +1,6 @@
 // @flow
 import type { Position } from 'css-box-model';
 import { isEqual, origin } from './state/position';
-import { LockMode } from './types'
 
 export const curves = {
   outOfTheWay: 'cubic-bezier(0.2, 0, 0, 1)',
@@ -54,14 +53,14 @@ export const transitions = {
   placeholder: `height ${outOfTheWayTiming}, width ${outOfTheWayTiming}, margin ${outOfTheWayTiming}`,
 };
 
-const moveTo = (offset: Position, lock?: LockMode): ?string =>
+const moveTo = (offset: Position, dragOverrideX?: number, dragOverrideY: number): ?string =>
   isEqual(offset, origin) ? null : `translate(${
-      lock === 'horizontal' 
-        ? 0
+      dragOverrideX != null 
+        ? dragOverrideX
         : offset.x
     }px, ${
-      lock === 'vertical' 
-        ? '' 
+      dragOverrideY != null 
+        ? dragOverrideY
         : offset.y
     }px)`;
 

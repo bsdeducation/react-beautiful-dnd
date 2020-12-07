@@ -56,7 +56,8 @@ export default function Draggable(props: Props) {
     shouldRespectForcePress,
     canDragInteractiveElements,
     isClone,
-    lock,
+    dragOverrideX,
+    dragOverrideY,
     // mapProps
     mapped,
 
