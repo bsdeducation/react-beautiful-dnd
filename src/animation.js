@@ -53,8 +53,10 @@ export const transitions = {
   placeholder: `height ${outOfTheWayTiming}, width ${outOfTheWayTiming}, margin ${outOfTheWayTiming}`,
 };
 
-const moveTo = (offset: Position, dragOverrideX?: number, dragOverrideY?: number): ?string =>
-  isEqual(offset, origin) ? null : `translate(${
+const moveTo = (offset: Position, dragOverrideX?: number, dragOverrideY?: number): ?string =>{
+  console.log('dragOverrideX: ', dragOverrideX)
+  console.log('dragOverrideY: ', dragOverrideY)
+  return isEqual(offset, origin) ? null : `translate(${
       dragOverrideX != null 
         ? dragOverrideX
         : offset.x
@@ -63,7 +65,7 @@ const moveTo = (offset: Position, dragOverrideX?: number, dragOverrideY?: number
         ? dragOverrideY
         : offset.y
     }px)`;
-
+}
 export const transforms = {
   moveTo,
   drop: (offset: Position, isCombining: boolean) => {
